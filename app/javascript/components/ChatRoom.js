@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
-
-const ChatRoom = (props) => {
+const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
@@ -26,7 +25,7 @@ const ChatRoom = (props) => {
       <h3>Chat Messages</h3>
 
       <div className="Content">
-        {messages.map((content) => {
+        {messages.map(content => {
           return <div>{content}</div>})}
       </div>
       <input
