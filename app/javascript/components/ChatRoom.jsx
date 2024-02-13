@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
 const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
@@ -21,7 +21,7 @@ const ChatRoom = () => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <h3>Chat Messages</h3>
 
       <div className="Content">
@@ -34,8 +34,8 @@ const ChatRoom = () => {
         onChange={(e) => setInput(e.target.value)}
       />
       <button onClick={input ? handleSubmit : undefined}>Go</button>
-    </React.Fragment>
+    </div>
   )
 }
 
-export default ChatRoom
+export default ChatRoom;
