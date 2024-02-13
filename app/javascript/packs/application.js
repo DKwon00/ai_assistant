@@ -17,3 +17,15 @@
 // var componentRequireContext = require.context("components", true);
 // //var ReactRailsUJS = require("react_ujs");
 // ReactRailsUJS.useContext(componentRequireContext);
+import ReactOnRails from 'react-on-rails';
+
+import NavBar from '../components/NavBar';
+import HomePage from '../components/HomePage';
+import ChatRoom from '../components/ChatRoom';
+
+// This is how react_on_rails can see the HelloWorld in the browser.
+ReactOnRails.register({
+    NavBar,
+    HomePage,
+    ChatRoom,
+});

@@ -11,6 +11,8 @@
   </head>
 
   <body>
+  <%# find out how to enable server side rendering %>
+    <%= react_component("NavBarServer", prerender: false) %>
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p> 
     <%= yield %>
