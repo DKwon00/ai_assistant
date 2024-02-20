@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import style from "./css/chatRoom.module.css";
 
-const ChatRoom = () => {
+const ChatRoom = (props) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
@@ -19,14 +20,41 @@ const ChatRoom = () => {
         ]);
       });
   };
+  
+  const DrawHistory = () => {
+    console.log(props.chatHistory)
+    return props.chatHistory.map((history) => (
+      <div>
+        {history.map((msg, i) => {
+          console.log(msg, i)
+          if (i == 0){
+            return <div className={style.user}>{msg}</div>
+          }
+          else {
+            return <div className={style.chatBot}>{msg}</div>
+          }
+        }
+        )}
+        </div>
+    ))
+  }
 
   return (
     <div>
       <h3>Chat Messages</h3>
-
+      <div className="Content"></div>
+      <DrawHistory></DrawHistory>
+      
       <div className="Content">
-        {messages.map(content => {
-          return <div>{content}</div>})}
+        {messages.map((msg, i) => {
+          if (i == 0){
+            return <div className={style.user}>{msg}</div>
+          }
+          else {
+            return <div className={style.chatBot}>{msg}</div>
+          }
+        }
+        )}
       </div>
       <input
         placeholder="Your prompt here..."
