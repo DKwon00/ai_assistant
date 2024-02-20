@@ -21,40 +21,27 @@ const ChatRoom = (props) => {
       });
   };
   
-  const DrawHistory = () => {
-    console.log(props.chatHistory)
-    return props.chatHistory.map((history) => (
-      <div>
-        {history.map((msg, i) => {
-          console.log(msg, i)
-          if (i == 0){
-            return <div className={style.user}>{msg}</div>
-          }
-          else {
-            return <div className={style.chatBot}>{msg}</div>
-          }
-        }
-        )}
-        </div>
-    ))
+  const DrawMessages = (props) => {
+    return props.msg.map((msg, i) => {
+      console.log(msg, i)
+      if (i == 0){
+        return <div class={style.user}>{msg}</div>
+      }
+      else {
+        return <div class={style.chatBot}>{msg}</div>
+      }
+    }
+    )
   }
 
   return (
     <div>
       <h3>Chat Messages</h3>
-      <div className="Content"></div>
-      <DrawHistory></DrawHistory>
-      
       <div className="Content">
-        {messages.map((msg, i) => {
-          if (i == 0){
-            return <div className={style.user}>{msg}</div>
-          }
-          else {
-            return <div className={style.chatBot}>{msg}</div>
-          }
-        }
-        )}
+        {props.chatHistory.map((history) => (
+          <DrawMessages msg={history}></DrawMessages>
+        ))}
+        <DrawMessages msg={messages}></DrawMessages>
       </div>
       <input
         placeholder="Your prompt here..."
