@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
             client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
             response = client.chat(
                 parameters: {
-                    model: "gpt-3.5-turbo",
+                    model: "gpt-3.5-turbo-0125",
                     messages: [{ role: "user", content: params["message"] }],
                     temperature: 0.7,
                 }
