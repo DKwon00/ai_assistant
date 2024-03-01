@@ -51,11 +51,7 @@ group :development do
   # gem "spring"
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-end
+
 
 gem "shakapacker", "= 7.2"
 
@@ -64,3 +60,15 @@ gem "react_on_rails"
 gem "ruby-openai"
 
 gem "devise"
+
+gem "neighbor"
+
+gem "nokogiri"
+
+gem "tanakai"
+
+gem 'capybara'
+
+group :test do
+  gem "cuprite"
+end
