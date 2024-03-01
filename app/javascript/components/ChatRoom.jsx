@@ -9,8 +9,6 @@ const ChatRoom = (props) => {
     setMessages([...messages, input]);
     setInput("");
 
-    //possible private URL in ENV
-    //have to add role to messages array
     await fetch('http://127.0.0.1:3000/send?message=' + input)
       .then((data) => data.json())
       .then((data) => 

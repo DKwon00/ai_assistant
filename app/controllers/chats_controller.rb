@@ -3,7 +3,6 @@ class ChatsController < ApplicationController
     def reply
         #potentially find a better way to authenticate requests
         if (user_signed_in?)
-
             client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
             response = client.chat(
                 parameters: {
