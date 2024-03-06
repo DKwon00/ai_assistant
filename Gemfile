@@ -69,6 +69,10 @@ gem "tanakai"
 
 gem 'capybara'
 
+gem 'poltergeist'
+
+gem 'httparty'
+
 group :test do
   gem "cuprite"
 end
