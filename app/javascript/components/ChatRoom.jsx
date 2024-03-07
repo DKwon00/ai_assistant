@@ -6,13 +6,20 @@ const ChatRoom = (props) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = async () => {
+    //update the messages with the new input
+    //setMessages([...messages, {id: "user", text: input}]);
     setMessages([...messages, input]);
+    //reset the submission box
     setInput("");
 
+    //update the messages with the chatbot input
     await fetch('http://127.0.0.1:3000/send?message=' + input)
       .then((data) => data.json())
       .then((data) => 
       {
+        //setMessages((messages) => [
+        //  ...messages, {id: "chatbot", text: data},
+        //]);
         setMessages((messages) => [
           ...messages, data,
         ]);
