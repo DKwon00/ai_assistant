@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :chats
-  resources :page
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "/send", to: 'chats#reply'
   get "/chat", to: 'chats#chat_room'
+  post "/page", to: 'page#create'
   # Defines the root path route ("/")
   # root "posts#index"
 end
