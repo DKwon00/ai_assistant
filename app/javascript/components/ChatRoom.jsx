@@ -22,7 +22,7 @@ const ChatRoom = (props) => {
   const DrawMessages = (props) => {
     return props.msg.map((msg, i) => {
       console.log(msg, i)
-      if (i == 0){
+      if ((i % 2) == 0){
         return <div class={style.user}>{msg}</div>
       }
       else {
