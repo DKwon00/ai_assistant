@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AiAssistant</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_pack_tag "application" %>
+  </head>
+
+  <body>
+  <%# find out how to enable server side rendering %>
+    <%= react_component("NavBar", prerender: false) %>
+    <p class="notice"><%= notice %></p> 
+    <p class="alert"><%= alert %></p> 
+    <%= yield %>
+  </body>
+</html>
