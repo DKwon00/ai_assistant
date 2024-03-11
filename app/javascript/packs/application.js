@@ -21,7 +21,7 @@ import ReactOnRails from 'react-on-rails';
 
 import NavBar from '../components/NavBar';
 import HomePage from '../components/HomePage';
-import ChatRoom from '../components/ChatRoom';
+import ChatRoom from '../bundles/ChatRoom/components/ChatRoom.jsx';
 
 // This is how react_on_rails can see the HelloWorld in the browser.
 ReactOnRails.register({
