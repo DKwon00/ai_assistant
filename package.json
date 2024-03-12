@@ -41,9 +41,25 @@
   "browserslist": [
     "defaults"
   ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "react-refresh": "^0.14.0",
-    "webpack-dev-server": "4"
+    "webpack-dev-server": "4",
+    "@chromatic-com/storybook": "^1.2.18",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-interactions": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/addon-onboarding": "^8.0.0",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.2",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/react-webpack5": "^8.0.0",
+    "@storybook/test": "^8.0.0",
+    "storybook": "^8.0.0"
   }
 }
