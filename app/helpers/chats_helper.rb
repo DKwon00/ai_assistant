@@ -1,2 +1,2 @@
-module ChatsHelper
+module ChatRoomHelper
 end

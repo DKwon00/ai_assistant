@@ -1,5 +1,5 @@
 require "openai"
-class ChatsController < ApplicationController
+class ChatRoomController < ApplicationController
     def reply
         #potentially find a better way to authenticate requests
         if (user_signed_in?)
