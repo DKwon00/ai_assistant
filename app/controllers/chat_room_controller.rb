@@ -6,7 +6,8 @@ class ChatRoomController < ApplicationController
             response = message_to_ai(<<~CONTENT)
                 Answer the question based on the context below, and
                 if the question can't be answered based on the context,
-                say \"I don't know\".
+                say \"Sorry, I'm not sure I know the answer. Please be 
+                more specific with your question, or ask something different.\".
         
                 Context:
                 #{get_context}
@@ -15,7 +16,7 @@ class ChatRoomController < ApplicationController
         
                 Question: #{params["message"]}
             CONTENT
-
+            
             #save the chats to database and send back AIs response to webpage
             current_user.q_and_a << [params["message"], response]
             current_user.save
@@ -47,7 +48,7 @@ class ChatRoomController < ApplicationController
             :embedding, question_embedding,
             distance: "euclidean"
         )
-
+        puts nearest_items.first.text
         get_context = nearest_items.first.text
     end
 

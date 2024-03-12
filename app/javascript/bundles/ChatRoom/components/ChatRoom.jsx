@@ -13,7 +13,7 @@ const ChatRoom = (props) => {
     setInput("");
 
     //update the messages with the chatbot input
-    await fetch(ENV['ROOT_URL'] + '/send?message=' + input)
+    await fetch(process.env.ROOT_URL + '/send?message=' + input)
       .then((data) => data.json())
       .then((data) => 
       {
