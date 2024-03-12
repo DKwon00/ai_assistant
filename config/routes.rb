@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   root "home#index"
   get "/send", to: 'chat_room#reply'
-  get "/chat", to: 'chat_room#chat_room'
+  get "/chat", to: 'chat_room#index'
   post "/page", to: 'page#create'
   get "hello_world", to: 'hello_world#index'
   # Defines the root path route ("/")
