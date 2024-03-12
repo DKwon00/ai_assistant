@@ -13,7 +13,7 @@ const ChatRoom = (props) => {
     setInput("");
 
     //update the messages with the chatbot input
-    await fetch('https://boiling-dawn-91869-6682bf805719.herokuapp.com/send?message=' + input)
+    await fetch(ENV['ROOT_URL'] + '/send?message=' + input)
       .then((data) => data.json())
       .then((data) => 
       {
