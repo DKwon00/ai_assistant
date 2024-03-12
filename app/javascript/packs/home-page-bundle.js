@@ -1,10 +1,9 @@
 import ReactOnRails from 'react-on-rails';
 
-import ChatRoom from '../bundles/ChatRoom/components/ChatRoom';
+import HomeRoom from '../bundles/HomeRoom/components/HomeRoom';
 import NavBar from '../bundles/NavBar/components/NavBar';
 
-
 ReactOnRails.register({
-    ChatRoom,
+    HomeRoom,
     NavBar,
 });

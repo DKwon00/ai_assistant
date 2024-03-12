@@ -19,13 +19,9 @@
 // ReactRailsUJS.useContext(componentRequireContext);
 import ReactOnRails from 'react-on-rails';
 
-import NavBar from '../components/NavBar';
-import HomePage from '../components/HomePage';
-import ChatRoom from '../bundles/ChatRoom/components/ChatRoom.jsx';
+import NavBar from '../bundles/NavBar/components/NavBar';
 
 // This is how react_on_rails can see the HelloWorld in the browser.
 ReactOnRails.register({
     NavBar,
-    HomePage,
-    ChatRoom,
 });
