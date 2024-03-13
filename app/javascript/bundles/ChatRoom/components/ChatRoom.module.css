@@ -4,3 +4,8 @@
 .chatBot{
     color: red;
 }
+.chatBox{
+    float: right;
+    width: 60%;
+    padding: 10px;
+}
