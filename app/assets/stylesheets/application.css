@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-.user{
-    color: green;
-}
-.chatBot{
-    color: red;
+body {
+    color: gray;
 }
