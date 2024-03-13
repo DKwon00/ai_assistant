@@ -20,8 +20,10 @@
 import ReactOnRails from 'react-on-rails';
 
 import NavBar from '../bundles/NavBar/components/NavBar';
+import ChatRoom from '../bundles/ChatRoom/components/ChatRoom';
 
 // This is how react_on_rails can see the HelloWorld in the browser.
 ReactOnRails.register({
+    ChatRoom,
     NavBar,
 });
