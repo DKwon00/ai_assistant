@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "SpaceGrotesk";
-  src: url(/fonts/SpaceGrotesk.ttf) format("truetype");
-}
+
 .user{
     color: green;
 }
@@ -10,5 +7,4 @@
 }
 body{
     background-color: gray;
-    font-family: 'SpaceGrotesk' 
 }
