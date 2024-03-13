@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'SpaceGrotesk';
-  src: URL('/fonts/SpaceGrotesk.ttf') format('truetype');
+  src: URL('../fonts/SpaceGrotesk.ttf') format('truetype');
 }
 .user{
     color: green;
