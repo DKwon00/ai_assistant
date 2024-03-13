@@ -40,7 +40,7 @@ const ChatRoom = (props) => {
   }
 
   return (
-    <div>
+    <div class={style.chatBox}>
       <h3>Chat Messages</h3>
       <div className="Content">
         {props.chatHistory.map((history) => (
