@@ -51,7 +51,6 @@ const ChatRoom = (props) => {
       <input
         placeholder="Your prompt here..."
         value={input}
-        type="submit"
         onChange={(e) => setInput(e.target.value)}
       />
       <button onClick={input ? handleSubmit : undefined}>Go</button>
