@@ -52,22 +52,16 @@ const ChatRoom = (props) => {
           ))}
           <DrawMessages msg={messages}></DrawMessages>
         </div>
-        <input
-          id="myInput"
-          placeholder="Your prompt here..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button id="myBtn" onClick={input ? handleSubmit : undefined}>Go</button>
-        <script>
-          var input = document.getElementById("myInput");
-          input.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              document.getElementById("myBtn").click();
-            }
-          });
-        </script>
+
+        <button onClick=>Go</button>
+        <form onSubmit={input ? handleSubmit : undefined}>
+          <input
+            placeholder="Your prompt here..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     </div>
   )
