@@ -41,6 +41,9 @@ const ChatRoom = (props) => {
 
   return (
     <div class={style.chatPage}>
+      <div class={style.chatSidebar}>
+        Need to create components!
+      </div>
       <div class={style.chatBox}>
         <h3>Chat Messages</h3>
         <div className="Content">
@@ -55,9 +58,6 @@ const ChatRoom = (props) => {
           onChange={(e) => setInput(e.target.value)}
         />
         <button onClick={input ? handleSubmit : undefined}>Go</button>
-      </div>
-      <div class={style.chatSidebar}>
-        Need to create components!
       </div>
     </div>
   )
