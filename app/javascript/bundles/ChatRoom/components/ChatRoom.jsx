@@ -56,8 +56,8 @@ const ChatRoom = (props) => {
         />
         <button onClick={input ? handleSubmit : undefined}>Go</button>
       </div>
-      <div class={style.chatSidebar>
-        
+      <div class={style.chatSidebar}>
+        Need to create components!
       </div>
     </div>
   )
