@@ -1,8 +1,8 @@
 .user{
-    color: blue;
+    color: #FFF;
 }
 .chatBot{
-    color: red;
+    color: #98261a;
 }
 
 .chatPage{
@@ -21,7 +21,7 @@
     align-items: flex-start;
     gap: 2.0%;
     border-radius: 10px;
-    background: #131314;
+    background: #303033;
 }
 
 .chatBox{
@@ -30,5 +30,5 @@
     height: 25%;
     flex: shrink;
     border-radius: 1.0%;
-    background: #131314;
+    background: #303033;
 }
