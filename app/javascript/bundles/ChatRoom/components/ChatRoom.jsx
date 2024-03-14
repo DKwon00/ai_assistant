@@ -5,7 +5,8 @@ const ChatRoom = (props) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     //update the messages with the new input
     //setMessages([...messages, {id: "user", text: input}]);
     setMessages([...messages, input]);
