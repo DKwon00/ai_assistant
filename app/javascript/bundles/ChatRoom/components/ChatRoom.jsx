@@ -40,20 +40,25 @@ const ChatRoom = (props) => {
   }
 
   return (
-    <div class={style.chatBox}>
-      <h3>Chat Messages</h3>
-      <div className="Content">
-        {props.chatHistory.map((history) => (
-          <DrawMessages msg={history}></DrawMessages>
-        ))}
-        <DrawMessages msg={messages}></DrawMessages>
+    <div class={style.chatPage}>
+      <div class={style.chatBox}>
+        <h3>Chat Messages</h3>
+        <div className="Content">
+          {props.chatHistory.map((history) => (
+            <DrawMessages msg={history}></DrawMessages>
+          ))}
+          <DrawMessages msg={messages}></DrawMessages>
+        </div>
+        <input
+          placeholder="Your prompt here..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={input ? handleSubmit : undefined}>Go</button>
       </div>
-      <input
-        placeholder="Your prompt here..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={input ? handleSubmit : undefined}>Go</button>
+      <div class={style.chatSidebar>
+        
+      </div>
     </div>
   )
 }
