@@ -53,7 +53,6 @@ const ChatRoom = (props) => {
           <DrawMessages msg={messages}></DrawMessages>
         </div>
 
-        <button onClick=>Go</button>
         <form onSubmit={input ? handleSubmit : undefined}>
           <input
             placeholder="Your prompt here..."
