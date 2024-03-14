@@ -5,8 +5,7 @@ const ChatRoom = (props) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  const handleSubmit = async() => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     //update the messages with the new input
     //setMessages([...messages, {id: "user", text: input}]);
     setMessages([...messages, input]);
@@ -53,15 +52,12 @@ const ChatRoom = (props) => {
           ))}
           <DrawMessages msg={messages}></DrawMessages>
         </div>
-
-        <form onSubmit={input ? handleSubmit : undefined}>
-          <input
-            placeholder="Your prompt here..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
+        <input
+          placeholder="Your prompt here..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={input ? handleSubmit : undefined}>Go</button>
       </div>
     </div>
   )
