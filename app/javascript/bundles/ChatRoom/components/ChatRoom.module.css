@@ -7,7 +7,7 @@
 
 .chatPage{
     display: flex;
-    padding: 1.6% 2.0% 2.2% 2.0%;
+    padding: 1.6% 0% 2.2% 0%;
     justify-content: center;
     align-items: center;
     gap: 2.0%;
