@@ -30,8 +30,7 @@
     "webpack": "5",
     "webpack-assets-manifest": "5",
     "webpack-cli": "4",
-    "webpack-merge": "5",
-    "framer-motion": "^11.0.13"
+    "webpack-merge": "5"
   },
   "version": "0.1.0",
   "babel": {
