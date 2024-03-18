@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import React, { useState } from 'react';
 import SearchIcon from "./search.svg"
 import "../../../stylesheets/styles.css"
 import { motion, useAnimation } from "framer-motion";
