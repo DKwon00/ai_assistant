@@ -70,8 +70,7 @@ class ChatRoomController < ApplicationController
             :embedding, question_embedding,
             distance: "euclidean"
         )
-        puts "CONTEXT"
-        puts nearest_items.first.text
+
         get_context = nearest_items.first.text
     end
 
