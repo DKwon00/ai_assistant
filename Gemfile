@@ -70,5 +70,3 @@ gem "ruby-openai", "~> 6.3"
 gem "httparty", "~> 0.21.0"
 
 gem "tanakai"
-
-gem "gemini-ai", "~> 3.2.0"
