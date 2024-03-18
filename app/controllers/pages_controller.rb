@@ -5,24 +5,16 @@ class PagesController < ApplicationController
 
     def create
         client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-        #if the data from website is too big, split the string and create two Pages
-        if OpenAI.rough_token_count(params['data']) > 8000
-            first, second = params['data'].partition(/.{#{params['data'].size/2}}/)[1,2]
-
-            page_one = Page.create(page_name: params['page_url'], text: first, query_count: 0, embedding: embed(first))
-            page_one.save
-
-            page_two = Page.create(page_name: params['page_url'] << '2', text: second, query_count: 0, embedding: embed(second))
-            page_two.save
+        if Game.exists?(title: params['title'])
+            @game = Game.find_by(title: params['title'])
         else
-            page = Page.create(page_name: params['page_url'], text: params['data'], query_count: 0, embedding: embed(params['data']))
-            page.save
+            @game = Game.create(title: params['title'])
         end
-
-        #puts params['data']
-
+        unless Page.exists?(page_name: params['page_url'])
+            Page.create(page_name: params['page_url'], query_count: 0, 
+            embedding: embed(params['data']), game_id: @game.id, text: params['data'])
+        end
     end
-
     private
 
     def embed(data)
@@ -31,7 +23,7 @@ class PagesController < ApplicationController
         response = client.embeddings(
             parameters: {
                 model: 'text-embedding-3-small',
-                input: data
+                input: data.truncate(25000)
             }
         )
         return response.dig('data', 0, 'embedding')
