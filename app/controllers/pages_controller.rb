@@ -23,7 +23,7 @@ class PagesController < ApplicationController
         response = client.embeddings(
             parameters: {
                 model: 'text-embedding-3-small',
-                input: data.truncate(25000)
+                input: params['page_url']
             }
         )
         return response.dig('data', 0, 'embedding')
