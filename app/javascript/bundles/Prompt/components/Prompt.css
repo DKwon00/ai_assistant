@@ -1,0 +1,104 @@
+.chatContainer {
+    position: absolute;
+    background-color: #1e1e1e;
+    padding: 12px 12px 12px 12px;
+    border-radius: 12px;
+    height: 572px;
+    width: 707px;
+    z-index: -3;
+  
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Space Grotesk";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .messageContainer {
+    overflow-y: auto;
+    height: 350px;
+    margin: 25px 10px 25px 10px;
+  }
+  
+  .promptContainer {
+    /* layout */
+    width: 100%;
+    height: 46px;
+    margin-bottom: 82px;
+    /* position */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -2;
+    /* style */
+    overflow: hidden;
+  }
+  
+  .prompt {
+    /* layout */
+    width: 532px;
+    height: 20px;
+    padding: 12px 12px 12px 12px;
+  
+    /* position */
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  
+    /* style */
+    outline: none;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #020203;
+    border-width: 1px;
+    background: #020203;
+  
+    /* font */
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 10px;
+  }
+  
+  .promptLine {
+    /* layout */
+    left: 0;
+    right: 0;
+    top: 44px;
+    width: 120px;
+    height: 74px;
+  
+    /* position */
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+  
+    /* style */
+    background-color: #575782; /* Background color of the circle */
+    border-radius: 159px;
+    filter: blur(12px);
+  }
+  
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a40;
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2e2e33;
+  }

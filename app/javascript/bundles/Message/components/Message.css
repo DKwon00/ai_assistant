@@ -1,0 +1,28 @@
+.message {
+    /* layout */
+    min-height: 15px;
+    height: auto;
+    width: 650px;
+    overflow-wrap: break-word;
+    /* position */
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 7px;
+    padding: 16px;
+    position: relative;
+  
+    /* style */
+    border-radius: 10px;
+    background: #020203;
+  
+    /* font */
+    color: #fff;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
