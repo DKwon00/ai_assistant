@@ -2,15 +2,11 @@
   font-family: 'SpaceGrotesk';
   src: URL('../fonts/SpaceGrotesk.ttf') format('truetype');
 }
-.user{
-    color: green;
-}
-.chatBot{
-    color: red;
-}
+
 body{
     background-color: gray;
     font-family: SpaceGrotesk;
+    background: linear-gradient(96deg, #0a0a0b 3.92%, #0a0a0a 94.74%);
 }
 
 .search {
