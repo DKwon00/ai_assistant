@@ -73,10 +73,10 @@ export default function InputBox() {
 
   return (
     <div>
-      <img className="search" src={SearchIcon} />
+      <img className="searchIcon" src={SearchIcon} />
       <motion.input
-        className="input"
-        placeholder="Ask a question about FAFSA..."
+        className="search"
+        placeholder="Search for a conversation..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -86,13 +86,13 @@ export default function InputBox() {
         onBlur={() => exitFocus()}
       />
       <motion.div
-        className="inputLine"
+        className="searchLine"
         initial="noHover"
         variants={lineVariants}
         animate={lineControls}
       />
       <motion.div
-        className="inputBox"
+        className="searchBox"
         initial="noHover"
         variants={boxVariants}
         animate={boxControls}

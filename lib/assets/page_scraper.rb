@@ -19,7 +19,7 @@ class WebSpider < Tanakai::Base
     #grab the contents of the page
     page_text = response.xpath("//div[@class='mw-parser-output']").text
     unless page_text.empty?
-      HTTParty.post(ENV['ROOT_URL'] + '/page', 
+      HTTParty.post('https://boiling-dawn-91869-6682bf805719.herokuapp.com/page', 
                       body: JSON.generate({:data => page_text, :page_url => url, :title => 'Minecraft'}), 
                       headers: { 'Content-Type' => 'application/json' })
     end

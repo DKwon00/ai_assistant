@@ -24,12 +24,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_111217) do
 
   create_table "pages", force: :cascade do |t|
     t.string "page_name"
+    t.string "text"
     t.integer "query_count"
     t.vector "embedding", limit: 1536
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "game_id"
-    t.string "text"
     t.index ["game_id"], name: "index_pages_on_game_id"
   end
 

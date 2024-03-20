@@ -13,7 +13,7 @@ body{
     font-family: SpaceGrotesk;
 }
 
-.input {
+.search {
     /* layout */
     width: 190px;
     height: 16px;
@@ -35,13 +35,13 @@ body{
     font-size: 10px;
   }
   
-  .search {
+  .searchIcon {
     margin: 12px;
     position: absolute;
     z-index: 1;
   }
   
-  .inputLine {
+  .searchLine {
     /* layout */
     width: 35px;
     height: 1px;
@@ -57,7 +57,7 @@ body{
     background: linear-gradient(90deg, #3aeee3 0%, #d9d9d9 100%);
   }
   
-  .inputBox {
+  .searchBox {
     /* layout */
     width: 23px;
     height: 23px;
