@@ -25,6 +25,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-on-rails": "13.4.0",
+    "react-scroll-to-bottom": "^4.2.0",
     "shakapacker": "7.2.0",
     "style-loader": "^3.3.4",
     "terser-webpack-plugin": "5",
