@@ -2,31 +2,31 @@ require "openai"
 class ChatRoomController < ApplicationController
     def reply
         #potentially find a better way to authenticate requests
-        if (user_signed_in?)
-            context = get_context()
+        
+        context = get_context()
+        
+        start_index = 0
+        end_index = context.length / 5
+
+        5.times do |i|
+            @response = get_response(context[start_index...end_index])
             
-            start_index = 0
-            end_index = context.length / 5
+            start_index += context.length / 5
+            end_index += context.length / 5
 
-            5.times do |i|
-                @response = get_response(context[start_index...end_index])
-                
-                start_index += context.length / 5
-                end_index += context.length / 5
-
-                unless @response == "Not Found"
-                    break
-                end
+            unless @response == "Not Found"
+                break
             end
-            if @response == "Not Found"
-                @response = "Sorry, I'm not sure I know the answer."
-            end
-
+        end
+        if @response == "Not Found"
+            @response = "Sorry, I'm not sure I know the answer."
+        end
+        if (user_signed_in?)
             #save the chats to database and send back AIs response to webpage
             current_user.q_and_a << [params["message"], @response]
             current_user.save
-            render json: @response.to_json
         end
+        render json: @response.to_json
     end
     
     private
@@ -38,9 +38,9 @@ class ChatRoomController < ApplicationController
 
     def get_response(context)
         return message_to_ai(<<~CONTENT)
-                Answer the question based on the context below, and
-                if the question can't be answered based on the context,
-                say \"Not Found\".
+                Answer the question based on the context below, the context
+                will be in the form of HTML, and if the question can't be 
+                answered based on the context, say \"Not Found\".
         
                 Context:
                 #{context}
@@ -54,8 +54,11 @@ class ChatRoomController < ApplicationController
     def message_to_ai(message_content)
         response = client.chat(
             parameters: {
-                model: "gpt-3.5-turbo-0125",
-                messages: [{ role: "user", content: message_content }],
+                model: "gpt-3.5-turbo-1106",
+                messages: [ { role: "system", content: "Questions and 
+                    information provided must be interpreted in the 
+                    context of Minecraft."}
+                    { role: "user", content: message_content }],
                 temperature: 0.1,
             }
         )

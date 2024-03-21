@@ -19,11 +19,11 @@ class PagesController < ApplicationController
 
     def embed(data)
         client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-
+        
         response = client.embeddings(
             parameters: {
                 model: 'text-embedding-3-small',
-                input: params['page_url']
+                input: data.truncate(20000)
             }
         )
         return response.dig('data', 0, 'embedding')

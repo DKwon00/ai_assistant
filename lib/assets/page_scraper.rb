@@ -7,19 +7,19 @@ class WebSpider < Tanakai::Base
   @name = "web_spider"
   @engine = :selenium_chrome
   @config = {
-    user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36"
+    user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36",
   }
 
   @file = File.open("links.txt")
   #@file.readlines.map(&:chomp)
-  @start_urls = @file.readlines.map(&:chomp)
-
+  @start_urls =['https://minecraft.wiki/w/Axolotl']
 
   def parse(response, url:, data: {})
     #grab the contents of the page
-    page_text = response.xpath("//div[@class='mw-parser-output']").text
+    page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows]//th|table[@class='infobox-rows']//p").text
+
     unless page_text.empty?
-      HTTParty.post('https://boiling-dawn-91869-6682bf805719.herokuapp.com/page', 
+      HTTParty.post(ENV['ROOT_URL'] + '/page', 
                       body: JSON.generate({:data => page_text, :page_url => url, :title => 'Minecraft'}), 
                       headers: { 'Content-Type' => 'application/json' })
     end

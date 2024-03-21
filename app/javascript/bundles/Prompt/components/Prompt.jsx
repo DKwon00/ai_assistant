@@ -11,8 +11,7 @@ export default function Prompt(props) {
   const [input, setInput] = useState("Hello! Ask me a question...");
   const [message, setMessage] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-    console.log("PROPS");
-    console.log(props.chatHistory);
+
   const lineVariants = {
     hover: {
       y: [30, 0],
