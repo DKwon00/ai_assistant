@@ -54,10 +54,12 @@ class ChatRoomController < ApplicationController
     def message_to_ai(message_content)
         response = client.chat(
             parameters: {
-                model: "gpt-3.5-turbo-1106",
+                model: "gpt-4-1106-preview",
                 messages: [ { role: "system", content: "Questions and 
                     information provided must be interpreted in the 
-                    context of Minecraft."}
+                    context of Minecraft. Don't say, 'based on the context provided'.
+                    Format your responses to be easily readable.
+                    "},
                     { role: "user", content: message_content }],
                 temperature: 0.1,
             }
