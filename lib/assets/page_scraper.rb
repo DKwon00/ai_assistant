@@ -12,11 +12,11 @@ class WebSpider < Tanakai::Base
 
   @file = File.open("links.txt")
   #@file.readlines.map(&:chomp)
-  @start_urls =['https://minecraft.wiki/w/Axolotl']
+  @start_urls = @file.readlines.map(&:chomp)
 
   def parse(response, url:, data: {})
     #grab the contents of the page
-    page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows]//th|table[@class='infobox-rows']//p").text
+    page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows']//th|//table[@class='infobox-rows']//p|//div[@class='mw-parser-output']//table")
 
     unless page_text.empty?
       HTTParty.post(ENV['ROOT_URL'] + '/page', 
