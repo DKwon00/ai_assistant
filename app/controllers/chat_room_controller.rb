@@ -5,15 +5,22 @@ class ChatRoomController < ApplicationController
         
         context = get_context()
         
-        start_index = 0
-        end_index = context.length / 5
+        # start_index = 0
+        # end_index = context.length / 5
 
-        5.times do |i|
-            @response = get_response(context[start_index...end_index])
+        # 5.times do |i|
+        #     @response = get_response(context[start_index...end_index])
             
-            start_index += context.length / 5
-            end_index += context.length / 5
+        #     start_index += context.length / 5
+        #     end_index += context.length / 5
 
+        #     unless @response == "Not Found"
+        #         break
+        #     end
+        # end
+
+        context.scan(/.{6000}/).each do |chunk|
+            @response = get_response(chunk)
             unless @response == "Not Found"
                 break
             end
@@ -58,8 +65,7 @@ class ChatRoomController < ApplicationController
                 messages: [ { role: "system", content: "Questions and 
                     information provided must be interpreted in the 
                     context of Minecraft. Don't say, 'based on the context provided'.
-                    Format your responses to be easily readable.
-                    "},
+                    Format your responses to be easily readable."},
                     { role: "user", content: message_content }],
                 temperature: 0.1,
             }
