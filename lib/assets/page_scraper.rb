@@ -20,7 +20,7 @@ class WebSpider < Tanakai::Base
     page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows']//th|//table[@class='infobox-rows']//p|//span[@class='mcui mcui-Crafting_Table pixel-image']")
     #https://juni-ai-c60f42c25c16.herokuapp.com
     unless page_text.empty?
-      HTTParty.post(ENV['ROOT_URL'] + '/page', 
+      HTTParty.post('https://juni-ai-c60f42c25c16.herokuapp.com/page', 
                       body: JSON.generate({:data => page_text, :page_url => url, :title => 'Minecraft'}), 
                       headers: { 'Content-Type' => 'application/json' })
     end

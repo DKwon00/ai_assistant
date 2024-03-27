@@ -42,3 +42,4 @@ yarn-debug.log*
 .yarn-integrity
 
 links.txt
+/lib/assets/page_scraper.rb
