@@ -14,10 +14,11 @@ class WebSpider < Tanakai::Base
   #@file.readlines.map(&:chomp)
   @start_urls = @file.readlines.map(&:chomp)
 
+
   def parse(response, url:, data: {})
     #grab the contents of the page
-    page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows']//th|//table[@class='infobox-rows']//p|//div[@class='mw-parser-output']//table")
-
+    page_text = response.xpath("//div[@class='mw-parser-output']//p|//table[@class='infobox-rows']//th|//table[@class='infobox-rows']//p|//span[@class='mcui mcui-Crafting_Table pixel-image']")
+    #https://juni-ai-c60f42c25c16.herokuapp.com
     unless page_text.empty?
       HTTParty.post(ENV['ROOT_URL'] + '/page', 
                       body: JSON.generate({:data => page_text, :page_url => url, :title => 'Minecraft'}), 
