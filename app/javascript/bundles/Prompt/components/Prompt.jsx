@@ -24,7 +24,7 @@ export default function Prompt(props) {
       opacity: 0,
     },
     focus: {
-      scaleX: 4,
+      scaleX: 3,
       transition: { duration: 0.5 },
       opacity: 1,
       ease: [0, 0.71, 0.2, 1.01],
