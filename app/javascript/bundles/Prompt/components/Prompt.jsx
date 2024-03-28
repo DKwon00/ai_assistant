@@ -150,13 +150,13 @@ export default function Prompt(props) {
       <ScrollToBottom className="messageContainer">
         {props.chatHistory.map((history) => (
             <>
-            {history.map((text) => (
-                <Message message={text}></Message>
+            {history.map((text, i) => (
+                <Message message={text} role={i}></Message>
             ))}
             </>
         ))}
-        {message.map((text) => (
-            <Message message={text}></Message>
+        {message.map((text, i) => (
+            <Message message={text} role={i}></Message>
         ))}
       </ScrollToBottom>
     </div>

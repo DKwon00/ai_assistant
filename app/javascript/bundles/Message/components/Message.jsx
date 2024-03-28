@@ -15,7 +15,9 @@ export default function Message(props) {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        <img src={icon} />
+        {props.role % 2 != 0 &&
+          <img src={icon}></img>
+        }
         <div className="text">{props.message}</div>
       </motion.div>
     );
