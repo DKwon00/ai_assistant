@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import SearchIcon from "./search.svg"
-import "../../../stylesheets/styles.css"
+import React, { useState } from "react";
+import SearchIcon from "./search.svg";
+import "../../../stylesheets/styles.css";
+import "./search.css";
 import { motion, useAnimation } from "framer-motion";
 
-export default function InputBox() {
+export default function Search() {
   const boxControls = useAnimation();
   const lineControls = useAnimation();
   const [input, setInput] = useState("");
   const [message, setMessage] = useState([]);
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
 
   const lineVariants = {
     hover: { scale: 1.2, transition: { duration: 0.4 }, opacity: 0.6 },
     noHover: { scale: 0, transition: { duration: 0.4 }, opacity: 0 },
-    focus: { scaleX: 5.3, transition: { duration: 0.4 }, opacity: 1 },
+    focus: { scaleX: 5, transition: { duration: 0.4 }, opacity: 1 },
     exitFocus: { scaleX: 1, transition: { duration: 0.4 }, opacity: 0 },
   };
 
@@ -21,7 +22,7 @@ export default function InputBox() {
     hover: { y: [0, -17], transition: { duration: 0.4 }, opacity: 0.6 },
     noHover: { y: [-17, 0], transition: { duration: 0.4 }, opacity: 0 },
     focus: {
-      scaleY: 1.74,
+      scaleY: 1.9,
       scaleX: 1.7,
       borderRadius: "4px",
       transition: { duration: 0.4 },
@@ -72,18 +73,20 @@ export default function InputBox() {
   };
 
   return (
-    <div>
+    <motion.div
+      className="searchContainer"
+      onHoverStart={() => enter()}
+      onHoverEnd={() => exit()}
+      onFocus={() => focus()}
+      onBlur={() => exitFocus()}
+    >
       <img className="searchIcon" src={SearchIcon} />
       <motion.input
         className="search"
-        placeholder="Search for a conversation..."
+        placeholder="Search..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        onHoverStart={() => enter()}
-        onHoverEnd={() => exit()}
-        onFocus={() => focus()}
-        onBlur={() => exitFocus()}
       />
       <motion.div
         className="searchLine"
@@ -98,13 +101,6 @@ export default function InputBox() {
         animate={boxControls}
       />
       <motion.div />
-      <div>
-        {message.map((text, index) => (
-          <div key={index}>
-            <span>{text.text}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    </motion.div>
   );
 }

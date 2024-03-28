@@ -49,7 +49,7 @@ export default function Prompt(props) {
       transition: { duration: 0.4 },
     },
     focus: {
-      borderColor: "#2E2E3B",
+      borderColor: "#575782",
       transition: { duration: 0.4 },
     },
     exitFocus: {
