@@ -3,7 +3,7 @@
   <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
   <%= react_component("ChatRoom", props: { chatHistory: current_user.q_and_a },  prerender: false) %>
 <% else %>
-  <%= button_to "Sign in", new_user_session_path %>
+  <%# <%= button_to "Sign in", new_user_session_path %>
 <%= react_component("ChatRoom", props: { chatHistory: [] },  prerender: false) %>
 
 <% end %>
