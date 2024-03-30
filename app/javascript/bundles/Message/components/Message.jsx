@@ -4,7 +4,7 @@ import icon from "./minecraftIcon.png"
 import React from 'react';
 
 export default function Message(props) {
-  if (props.message) {
+  if (props.chat) {
     return (
       <motion.div
         className="message"
@@ -15,10 +15,10 @@ export default function Message(props) {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        {props.role % 2 != 0 &&
+        {props.chat.id === 'chatbot' &&
           <img src={icon}></img>
         }
-        <div className="text">{props.message}</div>
+        <div className="text">{props.chat.text}</div>
       </motion.div>
     );
   }

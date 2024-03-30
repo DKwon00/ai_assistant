@@ -98,69 +98,60 @@ export default function Prompt(props) {
   const handleKeyDown = async (event) => {
     if (event.key === "Enter") {
         //update the messages with the new input
-        //setMessage([...messages, {id: "user", text: input}]);
-        setMessage([...message, input]);
+        setMessage([...message, {id: "user", text: input}]);
+        //setMessage([...message, input]);
         //reset the submission box
         setInput("");
 
         //update the messages with the chatbot input
-        await fetch(process.env.ROOT_URL + '/send?message=' + input)
+        await fetch(process.env.ROOT_URL + '/send?message=' + input + '&title=' + props.gameTitle)
             .then((data) => data.json())
             .then((data) => 
             {
-            //setMessage((messages) => [
-            //  ...messages, {id: "chatbot", text: data},
-            //]);
             setMessage((message) => [
-                ...message, data,
+             ...message, {id: "chatbot", text: data},
             ]);
+            // setMessage((message) => [
+            //     ...message, data,
+            // ]);
             });
     }
-
   };
-    
-  const DrawMessages = (props) => {
-    return props.msg.map((msg) => {
-        return <Message message={msg}></Message>
-    }
-    )
-  }
 
   return (
-    <div>
-      <div className="promptContainer">
-        <motion.input
-          className="prompt"
-          value={input}
-          variants={promptVariants}
-          animate={promptControls}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          onHoverStart={() => enter()}
-          onHoverEnd={() => exit()}
-          onFocus={() => focus()}
-          onBlur={() => exitFocus()}
-        />
+    props.chatHistory !== undefined ? (
+      <div>
+        <div className="promptContainer">
+          <motion.input
+            className="prompt"
+            value={input}
+            variants={promptVariants}
+            animate={promptControls}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onHoverStart={() => enter()}
+            onHoverEnd={() => exit()}
+            onFocus={() => focus()}
+            onBlur={() => exitFocus()}
+          />
 
-        <motion.div
-          className="promptLine"
-          variants={lineVariants}
-          animate={lineControls}
-          initial="noHover"
-        />
-      </div>
-      <ScrollToBottom className="messageContainer">
-        {props.chatHistory.map((history) => (
-            <>
-            {history.map((text, i) => (
-                <Message message={text} role={i}></Message>
-            ))}
-            </>
-        ))}
-        {message.map((text, i) => (
-            <Message message={text} role={i}></Message>
-        ))}
-      </ScrollToBottom>
+          <motion.div
+            className="promptLine"
+            variants={lineVariants}
+            animate={lineControls}
+            initial="noHover"
+          />
+        </div>
+        <ScrollToBottom className="messageContainer">
+          {props.chatHistory.map((object) => (
+              <Message chat={object}></Message>
+          ))}
+          {message.map((object) => (
+              <Message chat={object}></Message>
+          ))}
+        </ScrollToBottom>
     </div>
+    ) : null//implement popular topics
+
   );
 }

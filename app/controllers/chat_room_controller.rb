@@ -1,5 +1,21 @@
 require "openai"
+
 class ChatRoomController < ApplicationController
+    def get_chat_history
+        if (user_signed_in?)
+            if Topic.exists?(user_id: current_user.id, title: params["title"])
+                chat_history = Topic.find_by(user_id: current_user.id, title: params["title"]).q_and_a
+            else
+                chat_history = Topic.create(user_id: current_user.id, title: params["title"]).q_and_a
+            end
+        else
+            chat_history = []
+        end
+
+
+        render json: chat_history.to_json
+    end
+
     def reply
         #potentially find a better way to authenticate requests
         
@@ -15,20 +31,15 @@ class ChatRoomController < ApplicationController
             start += chunk_size
             end_index += chunk_size
         end
-        # context.scan(/.{6000}/).each do |chunk|
-        #     puts chunk
-        #     @response = get_response(chunk)
-        #     unless @response == "Not Found"
-        #         break
-        #     end
-        # end
+
         if @response == "Not Found"
             @response = "Sorry, I'm not sure I know the answer."
         end
         if (user_signed_in?)
             #save the chats to database and send back AIs response to webpage
-            current_user.q_and_a << [params["message"], @response]
-            current_user.save
+            topic = Topic.find_by(user_id: current_user.id, title: params["title"])
+            topic.q_and_a << [params["message"], @response]
+            topic.save
         end
         render json: @response.to_json
     end
