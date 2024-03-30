@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_111217) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_30_032842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_111217) do
     t.index ["game_id"], name: "index_pages_on_game_id"
   end
 
+  create_table "topics", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.string "q_and_a", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_topics_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,4 +56,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_111217) do
   end
 
   add_foreign_key "pages", "games"
+  add_foreign_key "topics", "users"
 end
