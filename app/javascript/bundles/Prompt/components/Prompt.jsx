@@ -120,8 +120,15 @@ export default function Prompt(props) {
 
   return (
     props.chatHistory !== undefined ? (
-      <div>
-        <div className="promptContainer">
+      <motion.div
+        initial={{ y: [0, 0] }}
+        animate={{ y: [50, 0] }}
+        transition={{
+          duration: 0.8,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+      >
+        <motion.div className="promptContainer">
           <motion.input
             className="prompt"
             value={input}
@@ -141,7 +148,7 @@ export default function Prompt(props) {
             animate={lineControls}
             initial="noHover"
           />
-        </div>
+        </motion.div>
         <ScrollToBottom className="messageContainer">
           {props.chatHistory.map((object) => (
               <Message chat={object}></Message>
@@ -150,7 +157,7 @@ export default function Prompt(props) {
               <Message chat={object}></Message>
           ))}
         </ScrollToBottom>
-    </div>
+    </motion.div>
     ) : null//implement popular topics
 
   );
