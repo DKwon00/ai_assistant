@@ -6,7 +6,7 @@ class ChatRoomController < ApplicationController
             if Topic.exists?(user_id: current_user.id, title: params["title"])
                 chat_history = Topic.find_by(user_id: current_user.id, title: params["title"]).q_and_a
             else
-                chat_history = Topic.create(user_id: current_user.id, title: params["title"]).q_and_a
+                chat_history = Topic.create(user_id: current_user.id, title: params["title"])
             end
         else
             chat_history = []
