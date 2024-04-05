@@ -1,0 +1,99 @@
+.clearContainer {
+    width: 225px;
+    height: 20px;
+    display: grid;
+    grid-template-columns: 0.2fr 1.6fr 0.2fr;
+    grid-template-areas: "icon text";
+    border-radius: 7px;
+    background: #1d1d1f;
+    padding: 12px 0px;
+    overflow: hidden;
+    position: relative;
+    text-transform: none;
+  }
+  
+  .clearButton {
+    grid-area: text;
+    /* layout */
+    height: 20px;
+    /* position */
+    z-index: 0;
+    /* style */
+    outline: none;
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    opacity: 0.5;
+    /* font */
+    font-size: 10px;
+    padding-left: 4px;
+    padding-top: 2px;
+  }
+  
+  .clearIcon {
+    grid-area: icon;
+    width: 16px;
+    padding-top: 3px;
+    padding-left: 10px;
+    z-index: 1;
+  }
+  
+  .clearCircle {
+    width: 149px;
+    height: 13px;
+    position: absolute;
+    margin: 45px 0px 0px 40px;
+    border-radius: 74.564px;
+    background: #ee3a3a;
+    filter: blur(12px);
+  }
+  
+  .clearOptions {
+    width: 100px;
+    color: white;
+  }
+  
+  .optionCheck {
+    position: absolute;
+    left: 4px;
+    bottom: 5px;
+    height: 12px;
+    width: 12px;
+  }
+  
+  .optionClose {
+    position: absolute;
+    left: 50px;
+    bottom: 5px;
+    height: 12px;
+    width: 12px;
+  }
+  
+  .optionButton {
+    padding-left: 20px;
+    font-size: 10px;
+    background-color: #1d1d1f;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  
+  .clearLine {
+    /* layout */
+    width: 234px;
+    height: 12px;
+  
+    /* position */
+    position: absolute;
+    top: 30px;
+    left: -40px;
+    z-index: 0;
+  
+    /* style */
+    border-radius: 74.564px;
+    background: #ee3a3a;
+    filter: blur(1px);
+    grid-area: text;
+  }
+  
