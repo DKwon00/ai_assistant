@@ -6,7 +6,6 @@ import React from 'react';
 export default function Message(props) {
   if (props.chat) {
       return (
-        <AnimatePresence>
           <motion.div
             className="message"
             initial={{ y: [0, 0] }}
@@ -22,7 +21,6 @@ export default function Message(props) {
             }     
             <div className="text">{props.chat}</div>
           </motion.div>
-        </AnimatePresence>
     )
     ;
   }

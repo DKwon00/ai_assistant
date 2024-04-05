@@ -1,7 +1,7 @@
 import "./Prompt.css";
 import Message from "../../Message/components/Message";
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import ScrollToBottom from "react-scroll-to-bottom";
 import React from 'react';
 
@@ -150,7 +150,6 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
           
           {chatHistory.map((text) => (
             <Message role={text[0]} chat={text[1]}></Message>
-
           ))}
         </ScrollToBottom>
     </motion.div>
