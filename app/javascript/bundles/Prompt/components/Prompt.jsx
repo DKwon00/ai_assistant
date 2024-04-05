@@ -5,11 +5,10 @@ import { motion, useAnimation } from "framer-motion";
 import ScrollToBottom from "react-scroll-to-bottom";
 import React from 'react';
 
-export default function Prompt(props) {
+export default function Prompt({ chatHistory, setMessage, gameTitle }) {
   const promptControls = useAnimation();
   const lineControls = useAnimation();
   const [input, setInput] = useState("Hello! Ask me a question...");
-  const [message, setMessage] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
   const lineVariants = {
@@ -97,29 +96,27 @@ export default function Prompt(props) {
 
   const handleKeyDown = async (event) => {
     if (event.key === "Enter") {
-        //update the messages with the new input
-        setMessage([...message, {id: "user", text: input}]);
-        //setMessage([...message, input]);
+
+        setMessage((message) => [
+          ...message, [0, input],
+        ]);
         //reset the submission box
         setInput("");
-
         //update the messages with the chatbot input
-        await fetch(process.env.ROOT_URL + '/send?message=' + input + '&title=' + props.gameTitle)
+        await fetch(process.env.ROOT_URL + '/send?message=' + input + '&title=' + gameTitle)
             .then((data) => data.json())
             .then((data) => 
             {
-            setMessage((message) => [
-             ...message, {id: "chatbot", text: data},
-            ]);
-            // setMessage((message) => [
-            //     ...message, data,
-            // ]);
+              setMessage((message) => [
+                ...message, [1, data],
+              ]);
             });
+
     }
   };
 
   return (
-    props.chatHistory !== undefined ? (
+    gameTitle !== undefined ? (
       <motion.div
         initial={{ y: [0, 0] }}
         animate={{ y: [50, 0] }}
@@ -150,11 +147,10 @@ export default function Prompt(props) {
           />
         </motion.div>
         <ScrollToBottom className="messageContainer">
-          {props.chatHistory.map((object) => (
-              <Message chat={object}></Message>
-          ))}
-          {message.map((object) => (
-              <Message chat={object}></Message>
+          
+          {chatHistory.map((text) => (
+            <Message role={text[0]} chat={text[1]}></Message>
+
           ))}
         </ScrollToBottom>
     </motion.div>

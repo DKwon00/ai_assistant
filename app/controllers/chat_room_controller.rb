@@ -43,6 +43,16 @@ class ChatRoomController < ApplicationController
         end
         render json: @response.to_json
     end
+
+    def destroy 
+        puts "DESTROYYOY"
+        if Topic.exists?(user_id: current_user.id, title: params["title"])
+            puts "TESTESTESTESTES"
+            topic = Topic.find_by(user_id: current_user.id, title: params["title"])
+            topic.q_and_a = []
+            topic.save
+        end
+    end
     
     private
     

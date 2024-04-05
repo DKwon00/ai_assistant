@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/", to: 'chat_room#index'
   get "/get", to: 'chat_room#get_chat_history' 
   post "/page", to: 'pages#create'
+  get "/destroy", to: 'chat_room#destroy'
   # Defines the root path route ("/")
   # root "posts#index"
 end

@@ -34,9 +34,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
             setMessage([]);
         }
         else {
-            data.map(text => (
-            setMessage([{id: 'user', text: text[0]}, {id: "chatbot", text: text[1]}])
-            ))
+            setMessage(data);
         }
         });
     }

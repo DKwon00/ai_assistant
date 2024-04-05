@@ -19,8 +19,8 @@ body {
 .tabContainer {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.3fr 1.7fr;
-  gap: 0px 0px;
+  grid-template-rows: 0.2fr 0.2fr 1.6fr;
+  gap: 20px 0px;
   grid-template-areas:
     "."
     ".";
