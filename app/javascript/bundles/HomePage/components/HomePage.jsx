@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export default function HomePage() {
-  document.body.style = "background: linear-gradient(140deg, rgba(0,130,147,1) 0%, rgba(10,10,10,1) 34%, rgba(10,10,10,1) 64%, rgba(57,57,255,1) 99%);";
+  document.body.style = "background: linear-gradient(140deg, rgba(0,130,147,1) 0%, rgba(10,10,10,1) 34%, rgba(10,10,10,1) 64%, rgba(57,57,255,1) 99%); margin: 0; padding: 0;";
   const title = "Juni-AI";
 
   const container = {

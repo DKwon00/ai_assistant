@@ -1,5 +1,6 @@
 import "../../../stylesheets/styles.css";
 import Search from "../../SearchBox/components/SearchBox";
+import logo from "../components/logo.png";
 import ClearChat from "../../ClearChat/components/ClearChat"
 import Library from "../../Library/components/Library";
 import Prompt from "../../Prompt/components/Prompt";
@@ -14,6 +15,10 @@ export default function ChatRoom(props) {
 
   return (
     <div className="body">
+      <div className="header">
+        <div><img src={logo} className="titleImg"/></div>
+        <div className="title">Juni-AI_</div>
+      </div>
       <div className="tabContainer">
         <ClearChat             
             selectedTab={selectedTab} 

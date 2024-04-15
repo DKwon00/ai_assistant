@@ -1,6 +1,5 @@
 body {
-  margin: 0;
-  padding: 0;
+  padding: 16.5px 20px 22.5px 20px;
   overflow: hidden;
   background: linear-gradient(96deg, #0a0a0b 3.92%, #0a0a0a 94.74%);
   font-family: "Space Grotesk", sans-serif;
@@ -12,11 +11,34 @@ body {
 .body {
   display: grid;
   grid-template-columns: 250px auto;
-  grid-template-rows: 0.2fr 1.8fr;
+  grid-template-rows: 0.1fr 1.8fr;
   gap: 20px;
   grid-template-areas:
     "header chat"
     "tab chat";
+}
+
+.header {
+  grid-area: header;
+  display: grid; 
+  grid-template-columns: 0.2fr 0.8fr; 
+  grid-template-rows: 1fr;
+  gap: 0px 0px; 
+}
+
+.titleImg{
+  height: 30px;
+  width: 30px;
+  float: right;
+  padding-top: 2px;
+}
+
+.title{
+  padding-top: 10px;
+  border-radius: 12px;
+  width: auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
 }
 
 .tabContainer {
