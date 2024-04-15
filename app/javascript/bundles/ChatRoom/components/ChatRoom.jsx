@@ -15,7 +15,6 @@ export default function ChatRoom(props) {
   return (
     <div className="body">
       <div className="tabContainer">
-        <Search />
         <ClearChat             
             selectedTab={selectedTab} 
             setMessage={setMessage}/>
