@@ -97,7 +97,7 @@ export default function HomePage() {
         </motion.div>
       </div>
       <motion.a 
-        href="google.com"
+        href="/chat"
         className="link" 
         initial={{ opacity: 0, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}             
