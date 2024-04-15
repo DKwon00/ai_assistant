@@ -45,9 +45,7 @@ class ChatRoomController < ApplicationController
     end
 
     def destroy 
-        puts "DESTROYYOY"
         if Topic.exists?(user_id: current_user.id, title: params["title"])
-            puts "TESTESTESTESTES"
             topic = Topic.find_by(user_id: current_user.id, title: params["title"])
             topic.q_and_a = []
             topic.save
@@ -82,7 +80,7 @@ class ChatRoomController < ApplicationController
                 model: "gpt-3.5-turbo-1106",
                 messages: [ { role: "system", content: "Questions and 
                     information provided must be interpreted in the 
-                    context of Minecraft. Don't say, 'based on the context provided'.
+                    context of #{params["title"]}. Don't say, 'based on the context provided'.
                     Format your responses to be easily readable."},
                     { role: "user", content: message_content }],
                 temperature: 0.1,
