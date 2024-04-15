@@ -1,0 +1,94 @@
+.homePage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  color: grey;
+  position: absolute;
+  top: 0;
+  right: 0;
+  rotate: 45deg;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+}
+
+.logoEye {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #0a0a0a;
+}
+
+.eye {
+  width: 68%;
+  height: 68%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #3939ff 0%, #aee6ed 100%);
+  position: absolute;
+  left: 17%;
+}
+
+.eyelid {
+  width: 68%;
+  height: 68%;
+  border-radius: 50%;
+  background-color: #0a0a0a;
+  position: absolute;
+  left: 15.5%;
+}
+
+.eyeMouth {
+  width: 81.8%;
+  height: 50%;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border: 15px solid #aee6ed;
+  border-top: 0;
+  position: absolute;
+  margin-top: 27%;
+}
+
+.logoText {
+  display: "flex";
+  padding-bottom: 30px;
+  padding-left: 15px;
+  font-size: 6vw;
+  color: #fff;
+}
+
+.typing {
+  display: inline;
+  border-radius: 3px;
+}
+
+.link {
+  position: absolute;
+  margin-top: 200px;
+  color: white;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .logoEye {
+    width: 75px;
+    height: 75px;
+  }
+  .eyeMouth {
+    border: 7.5px solid #aee6ed;
+    border-top: 0;
+  }
+}
+  
