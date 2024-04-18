@@ -1,6 +1,6 @@
 import "./Message.css";
 import { AnimatePresence, motion } from "framer-motion";
-import icon from "./minecraftIcon.png"
+import icon from "./logo.png"
 import React from 'react';
 
 export default function Message(props) {
