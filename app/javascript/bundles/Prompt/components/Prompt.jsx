@@ -95,7 +95,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
   };
 
   const handleKeyDown = async (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && input != "") {
 
         setMessage((message) => [
           ...message, [0, input],
