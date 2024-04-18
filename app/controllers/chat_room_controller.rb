@@ -67,7 +67,7 @@ class ChatRoomController < ApplicationController
                     information provided must be interpreted in the 
                     context of #{params["title"]}. If the question cannot be answered in the context of #{params["title"]}, 
                     tell the user to ask a question within the context of #{params["title"]}
-                    Format your responses to be easily readable."},
+                    Be concise with your answer. Answer only the question specifically."},
                     { role: "user", content: params["message"] }],
                 temperature: 0.1,
             }
