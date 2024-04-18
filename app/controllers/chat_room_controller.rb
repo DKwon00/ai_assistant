@@ -33,7 +33,7 @@ class ChatRoomController < ApplicationController
         end
 
         if @response == "Not Found"
-            @response = "Sorry, I'm not sure I know the answer."
+            @response = query_online
         end
         if (user_signed_in?)
             #save the chats to database and send back AIs response to webpage
