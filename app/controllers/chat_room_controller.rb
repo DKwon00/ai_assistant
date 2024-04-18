@@ -59,6 +59,22 @@ class ChatRoomController < ApplicationController
         @client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
     end
 
+    def query_online 
+        response = client.chat(
+            parameters: {
+                model: "gpt-4-1106-preview",
+                messages: [ { role: "system", content: "Questions and 
+                    information provided must be interpreted in the 
+                    context of #{params["title"]}. If the question cannot be answered in the context of #{params["title"]}, 
+                    tell the user to ask a question within the context of #{params["title"]}
+                    Format your responses to be easily readable."},
+                    { role: "user", content: params["message"] }],
+                temperature: 0.1,
+            }
+        )
+        return response.dig("choices", 0, "message", "content")
+    end
+
     def query_chatgpt(context)
         return message_to_ai(<<~CONTENT)
                 Answer the question based on the context below, the context
@@ -78,10 +94,7 @@ class ChatRoomController < ApplicationController
         response = client.chat(
             parameters: {
                 model: "gpt-3.5-turbo-1106",
-                messages: [ { role: "system", content: "Questions and 
-                    information provided must be interpreted in the 
-                    context of #{params["title"]}. Don't say, 'based on the context provided'.
-                    Format your responses to be easily readable."},
+                messages: [
                     { role: "user", content: message_content }],
                 temperature: 0.1,
             }
@@ -92,7 +105,7 @@ class ChatRoomController < ApplicationController
                     model: "gpt-4-1106-preview",
                     messages: [ { role: "system", content: "Questions and 
                         information provided must be interpreted in the 
-                        context of Minecraft. Don't say, 'based on the context provided'.
+                        context of #{params["title"]}. Don't say, 'based on the context provided'.
                         Format your responses to be easily readable."},
                         { role: "user", content: message_content }],
                     temperature: 0.1,
