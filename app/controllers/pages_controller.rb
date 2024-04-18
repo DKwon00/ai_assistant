@@ -4,7 +4,6 @@ class PagesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def create
-        client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
         if Game.exists?(title: params['title'])
             @game = Game.find_by(title: params['title'])
         else
