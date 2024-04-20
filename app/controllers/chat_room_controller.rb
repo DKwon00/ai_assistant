@@ -38,7 +38,8 @@ class ChatRoomController < ApplicationController
         if (user_signed_in?)
             #save the chats to database and send back AIs response to webpage
             topic = Topic.find_by(user_id: current_user.id, title: params["title"])
-            topic.q_and_a << [params["message"], @response]
+            topic.q_and_a << [0, params["message"]]
+            topic.q_and_a << [1, @response]
             topic.save
         end
         render json: @response.to_json
