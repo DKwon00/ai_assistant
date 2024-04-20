@@ -16,7 +16,7 @@ export default function Message(props) {
             }}
             exit={{ y: [0, 0] }}
           >
-            {props.role === 1 &&
+            {props.role === "1" &&
               <img src={icon}></img>
             }     
             <div className="text">{props.chat}</div>

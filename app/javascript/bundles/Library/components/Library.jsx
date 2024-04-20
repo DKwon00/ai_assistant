@@ -1,12 +1,13 @@
 import "./Library.css";
 import "../../../stylesheets/styles.css";
+import icons from "./libraryIcons";
 import React, { useState } from "react";
 import { motion, AnimatePresence, animate, } from "framer-motion";
-import icon from "./minecraftIcon.png";
 
 export default function Library({ libraries, selectedTab, setSelectedTab, setMessage }) {
     const [hoverTab, setHoverTab] = useState();
-
+    const [images, setImages] = useState();
+    
     const handleClick = (title) => {
         if (selectedTab !== undefined) {
         animate(
@@ -61,7 +62,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
         }
     };
 
-    return libraries.map((object) => (
+    return libraries.map((object, i) => (
         <motion.div
         id={object.title}
         className="libraryContainer"
@@ -69,7 +70,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
         whileHover={() => handleHover(object.title)}
         onHoverEnd={() => handleExit(object.title)}
         >
-            <img className="libraryIcon" src={icon} />
+            <img className="libraryIcon" src={icons[i]} />
             {object.title}
             <AnimatePresence className="library" mode="popLayout">
             {object.title === hoverTab && object.title !== selectedTab ? (

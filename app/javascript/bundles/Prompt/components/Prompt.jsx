@@ -98,7 +98,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
     if (event.key === "Enter" && input != "") {
 
         setMessage((message) => [
-          ...message, [0, input],
+          ...message, ["0", input],
         ]);
         //reset the submission box
         setInput("");
@@ -108,7 +108,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
             .then((data) => 
             {
               setMessage((message) => [
-                ...message, [1, data],
+                ...message, ["1", data],
               ]);
             });
 
@@ -147,9 +147,8 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
           />
         </motion.div>
         <ScrollToBottom className="messageContainer">
-          
           {chatHistory.map((text) => (
-            <Message role={text[0]} chat={text[1]}></Message>
+            <Message role={text[0]} chat={text[1]}>{console.log(text[0])}</Message>
           ))}
         </ScrollToBottom>
     </motion.div>
