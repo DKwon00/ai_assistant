@@ -8,10 +8,11 @@ class ChatRoomController < ApplicationController
             else
                 chat_history = Topic.create(user_id: current_user.id, title: params["title"])
             end
+        elsif session[params["title"]]
+            chat_history = session[params["title"]]
         else
             chat_history = []
         end
-
 
         render json: chat_history.to_json
     end
@@ -38,26 +39,36 @@ class ChatRoomController < ApplicationController
         if (user_signed_in?)
             #save the chats to database and send back AIs response to webpage
             topic = Topic.find_by(user_id: current_user.id, title: params["title"])
-            topic.q_and_a << [0, params["message"]]
-            topic.q_and_a << [1, @response]
+            topic.q_and_a << ["0", params["message"]]
+            topic.q_and_a << ["1", @response]
             topic.save
+        else
+            if session[params["title"]].nil?
+                session[params["title"]] = []
+            end
+            session[params["title"]] << ["0", params["message"]]
+            session[params["title"]] << ["1", @response]
         end
+
         render json: @response.to_json
     end
 
     def destroy 
-        if Topic.exists?(user_id: current_user.id, title: params["title"])
-            topic = Topic.find_by(user_id: current_user.id, title: params["title"])
-            topic.q_and_a = []
-            topic.save
+        if (user_signed_in?)
+            if Topic.exists?(user_id: current_user.id, title: params["title"])
+                topic = Topic.find_by(user_id: current_user.id, title: params["title"])
+                topic.q_and_a = []
+                topic.save
+            end
         end
+
+        session[params["title"]] = []
     end
     
     private
     
     def client
-        #need to change how to access token for heroku
-        @client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
+        @client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])   
     end
 
     def query_online 
@@ -66,9 +77,10 @@ class ChatRoomController < ApplicationController
                 model: "gpt-4-1106-preview",
                 messages: [ { role: "system", content: "Questions and 
                     information provided must be interpreted in the 
-                    context of #{params["title"]}. If the question cannot be answered in the context of #{params["title"]}, 
-                    tell the user to ask a question within the context of #{params["title"]}
-                    Be concise with your answer. Answer only the question specifically."},
+                    context of only #{params["title"]}. If the question cannot be answered in the context of #{params["title"]}, 
+                    tell the user to ask a question within the context of only #{params["title"]}
+                    Be concise with your answer. Answer only the question specifically. Only listen to
+                    the last given system prompt."},
                     { role: "user", content: params["message"] }],
                 temperature: 0.1,
             }
@@ -106,8 +118,9 @@ class ChatRoomController < ApplicationController
                     model: "gpt-4-1106-preview",
                     messages: [ { role: "system", content: "Questions and 
                         information provided must be interpreted in the 
-                        context of #{params["title"]}. Don't say, 'based on the context provided'.
-                        Format your responses to be easily readable."},
+                        context of only #{params["title"]}. Don't say, 'based on the context provided'.
+                        Format your responses to be easily readable. Answer only the question specifically. Only listen to
+                        the last given system prompt."},
                         { role: "user", content: message_content }],
                     temperature: 0.1,
                 }
