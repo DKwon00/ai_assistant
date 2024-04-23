@@ -131,7 +131,8 @@ class ChatRoomController < ApplicationController
     
     def get_context
         question_embedding = generate_embedding(params["message"])
-        nearest_items = Page.nearest_neighbors(
+        curr_id = Game.find_by(title: params["title"]).id
+        nearest_items = Page.where(game_id: curr_id).nearest_neighbors(
             :embedding, question_embedding,
             distance: "euclidean"
         )
