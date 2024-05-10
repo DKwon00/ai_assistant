@@ -53,7 +53,9 @@ export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab, 
             }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
-            <ClearChat />
+            <ClearChat 
+              selectedTab={selectedTab} 
+              setMessage={setMessage} />
             <div>
               <Library
               libraries={libraries}
