@@ -25,7 +25,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
     
   const handleClick = (title) => {
     var elms = document.querySelectorAll("[id=" + title + "]");
-    var selectedTabs = document.querySelectorAll("[id=" + selectedTab + "]");
+    var selectedTabs = document.querySelectorAll('[id="' + selectedTab + '"]');
     for(var i = 0; i < selectedTabs.length; i++){
       if (selectedTab !== undefined) {
         animate(
@@ -47,7 +47,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
   };
 
   const handleHover = (title) => {
-    var elms = document.querySelectorAll("[id=" + title + "]");
+    var elms = document.querySelectorAll('[id="' + title + '"]');
     setHoverTab(title);
     for(var i = 0; i < elms.length; i++){
 
@@ -62,7 +62,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
   };
 
   const handleExit = (title) => {
-    var elms = document.querySelectorAll("[id=" + title + "]");
+    var elms = document.querySelectorAll('[id="' + title + '"]');
     setHoverTab("");
     for(var i = 0; i < elms.length; i++){
 
@@ -78,16 +78,16 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
 
     return libraries.map((object, i) => (
         <motion.div
-        id={object.title.replace(/ /g, '')}
+        id={object.title}
         className="libraryContainer"
-        onClick={() => handleClick(object.title.replace(/ /g, ''))}
-        whileHover={() => handleHover(object.title.replace(/ /g, ''))}
-        onHoverEnd={() => handleExit(object.title.replace(/ /g, ''))}
+        onClick={() => handleClick(object.title)}
+        whileHover={() => handleHover(object.title)}
+        onHoverEnd={() => handleExit(object.title)}
         >
             <img className="libraryIcon" src={icons[i]} />
             {object.title}
             <AnimatePresence className="library" mode="popLayout">
-            {object.title.replace(/ /g, '') === hoverTab && object.title.replace(/ /g, '') !== selectedTab ? (
+            {object.title === hoverTab && object.title !== selectedTab ? (
                 <motion.div>
                 <motion.div
                     className="libraryBox"
@@ -105,7 +105,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
                 ></motion.div>
                 </motion.div>
             ) : null}
-            {object.title.replace(/ /g, '') === selectedTab ? (
+            {object.title === selectedTab ? (
                 <motion.div>
                 <motion.div
                     className="libraryBox"
