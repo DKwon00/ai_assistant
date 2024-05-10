@@ -24,7 +24,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
     }
     
   const handleClick = (title) => {
-    var elms = document.querySelectorAll("[id=" + title + "]");
+    var elms = document.querySelectorAll('[id="' + title + '"]');
     var selectedTabs = document.querySelectorAll('[id="' + selectedTab + '"]');
     for(var i = 0; i < selectedTabs.length; i++){
       if (selectedTab !== undefined) {
