@@ -10,17 +10,18 @@ class WebSpider < Tanakai::Base
     user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36",
   }
 
-  @file = File.open("links.txt")
+  #@file = File.open("links.txt")
   #@file.readlines.map(&:chomp)
-  @start_urls = ["https://terraria.wiki.gg/wiki/Terraria"]
+  @start_urls = ["https://fortnite.fandom.com/wiki/Fortnite_wiki"]
 
   def parse(response, url:, data: {})
     #grab the contents of the page
-    page_text = response.xpath("//div[@class='mw-parser-output']//p")
+    page_text = response.xpath("//p")
     #https://juni-ai-c60f42c25c16.herokuapp.com
+    #https://127.0.0.1:3000
     unless page_text.empty?
-      HTTParty.post(ENV['ROOT_URL'] + '/page',
-                      body: JSON.generate({:data => page_text, :page_url => url, :title => 'Terraria'}), 
+      HTTParty.post('https://juni-ai-c60f42c25c16.herokuapp.com/page',
+                      body: JSON.generate({:data => page_text, :page_url => url, :title => 'Fortnite'}), 
                       headers: { 'Content-Type' => 'application/json' })
     end
     #recurse through any additional links found on the webpage
