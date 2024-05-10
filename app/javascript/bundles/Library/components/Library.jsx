@@ -78,11 +78,11 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
 
     return libraries.map((object, i) => (
         <motion.div
-        id={object.title}
+        id={object.title.replace(/ /g, '')}
         className="libraryContainer"
-        onClick={() => handleClick(object.title)}
-        whileHover={() => handleHover(object.title)}
-        onHoverEnd={() => handleExit(object.title)}
+        onClick={() => handleClick(object.title.replace(/ /g, ''))}
+        whileHover={() => handleHover(object.title.replace(/ /g, ''))}
+        onHoverEnd={() => handleExit(object.title.replace(/ /g, ''))}
         >
             <img className="libraryIcon" src={icons[i]} />
             {object.title}
