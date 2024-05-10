@@ -14,7 +14,7 @@ export default function ChatRoom(props) {
 
   return (
     <div className="body">
-      <div className="header">
+      <div className="headerContainer">
         <div><img src={logo} className="titleImg"/></div>
         <div className="title">Juni-AI_</div>
       </div>
