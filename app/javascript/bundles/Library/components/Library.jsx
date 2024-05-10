@@ -43,7 +43,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
         { duration: 0.5 }
       );
     }
-
+    getChatHistory(title);
   };
 
   const handleHover = (title) => {
