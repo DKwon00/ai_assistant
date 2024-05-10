@@ -111,7 +111,7 @@ body {
   background: #2e2e33;
 }
 
-@media (max-width: 750px){
+@media (max-width: 768px){
   .body {
     display: inline;
   }
