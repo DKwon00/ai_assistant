@@ -87,7 +87,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
             <img className="libraryIcon" src={icons[i]} />
             {object.title}
             <AnimatePresence className="library" mode="popLayout">
-            {object.title === hoverTab && object.title !== selectedTab ? (
+            {object.title.replace(/ /g, '') === hoverTab && object.title.replace(/ /g, '') !== selectedTab ? (
                 <motion.div>
                 <motion.div
                     className="libraryBox"
@@ -105,7 +105,7 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
                 ></motion.div>
                 </motion.div>
             ) : null}
-            {object.title === selectedTab ? (
+            {object.title.replace(/ /g, '') === selectedTab ? (
                 <motion.div>
                 <motion.div
                     className="libraryBox"
