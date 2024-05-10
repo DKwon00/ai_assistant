@@ -110,3 +110,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2e2e33;
 }
+
+@media (max-width: 750px){
+  .body {
+    display: inline;
+  }
+
+  .tabContainer {
+    display: none;
+  }
+  
+  .headerContainer {
+    display: none;
+  }
+
+  .header {
+    text-align: center;
+  }
+}
