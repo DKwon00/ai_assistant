@@ -1,0 +1,31 @@
+.menuContainer {
+    z-index: 3;
+    position: absolute;
+    padding: 2vh 2vw;
+    margin: 24.5px 28px 30.5px 28px;
+    top: 0;
+    left: 0;
+    height:20px;
+    border-radius: 12px;
+    background: linear-gradient(96deg, #0a0a0b 3.92%, #0a0a0a 94.74%);
+}
+
+.menu {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 0.2fr, 0.2fr 1.6fr; 
+    gap: 20px;
+    padding-top: 20px;
+    background: linear-gradient(96deg, #0a0a0b 3.92%, #0a0a0a 94.74%);
+}
+
+@media (min-width: 750px) {
+    .menuContainer {
+        display: none;
+    }
+    .eyeMouth {
+      border: 7.5px solid #aee6ed;
+      border-top: 0;
+    }
+  }
+  
