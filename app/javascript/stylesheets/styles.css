@@ -123,6 +123,10 @@ body {
   .headerContainer {
     display: none;
   }
+  
+  .header {
+    display: none;
+  }
 
   .gameTitle {
     text-align: center;
