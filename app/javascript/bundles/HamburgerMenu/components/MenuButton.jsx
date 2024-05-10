@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { motion, useAnimation } from "framer-motion";
 
 const path01Variants = {
