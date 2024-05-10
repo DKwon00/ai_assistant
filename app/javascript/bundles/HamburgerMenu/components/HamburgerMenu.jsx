@@ -5,7 +5,7 @@ import MenuButton from "./MenuButton";
 import React, { useState } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 
-export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab }) {
+export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab, message, setMessage }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -59,6 +59,8 @@ export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab }
               libraries={libraries}
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
+              message={message}
+              setMessage={setMessage}
               />
             </div>
           </motion.div>
