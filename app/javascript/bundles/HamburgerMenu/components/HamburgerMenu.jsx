@@ -1,7 +1,7 @@
 import "./HamburgerMenu.css";
 import Library from "../../Library/components/Library";
 import ClearChat from "../../ClearChat/components/ClearChat";
-import MenuButton from "./menuButton";
+import MenuButton from "./MenuButton";
 import React, { useState } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 
