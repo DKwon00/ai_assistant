@@ -33,7 +33,11 @@ export default function ChatRoom(props) {
         </div>
       </div>
       <div className="chatContainer">
-        {selectedTab}
+        <HamburgerMenu             
+          libraries={libraries}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}/>
+        <div className="header">{selectedTab}</div>
         <hr style={{ borderColor: "#3A3A40" }}></hr>
         <AnimatePresence mode="wait">
           <Prompt chatHistory={message} setMessage={setMessage} gameTitle={selectedTab}/>
