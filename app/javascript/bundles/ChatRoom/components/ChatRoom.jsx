@@ -40,7 +40,7 @@ export default function ChatRoom(props) {
           setSelectedTab={setSelectedTab}
           message={message}
           setMessage={setMessage}/>
-        <div className="gameTitle">{selectedTab}</div>
+        <div className="gameTitle">{selectedTab || "Please select a library to begin chatting!"}</div>
         <hr style={{ borderColor: "#3A3A40" }}></hr>
         <AnimatePresence mode="wait">
           <Prompt chatHistory={message} setMessage={setMessage} gameTitle={selectedTab}/>
