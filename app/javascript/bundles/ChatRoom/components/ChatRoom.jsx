@@ -35,7 +35,7 @@ export default function ChatRoom(props) {
       </div>
       <div className="chatContainer">
         <HamburgerMenu             
-          libraries={libraries}
+          libraries={props.gameTitles}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}/>
         <div className="header">{selectedTab}</div>
