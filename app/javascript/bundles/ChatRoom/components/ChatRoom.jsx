@@ -4,7 +4,7 @@ import Prompt from "../../Prompt/components/Prompt";
 import Library from "../../Library/components/Library";
 import Search from "../../SearchBox/components/SearchBox";
 import ClearChat from "../../ClearChat/components/ClearChat";
-import HamburgerMenu from "../../HamburgerMenu/components/HamburgerMenu;
+import HamburgerMenu from "../../HamburgerMenu/components/HamburgerMenu";
 import React, { useState } from 'react';
 import { motion, AnimatePresence, animate } from "framer-motion";
 
