@@ -15,12 +15,12 @@
   outline: none;
   border-radius: 10px;
   border-style: solid;
-  border-color: #020203;
+  border-color: rgba(255, 255, 255, 0.3);
   border-width: 1px;
   background: #020203;
 
   /* font */
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 10px;
 }
 

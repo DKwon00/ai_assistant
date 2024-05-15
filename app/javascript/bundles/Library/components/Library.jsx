@@ -7,23 +7,6 @@ import { motion, AnimatePresence, animate, } from "framer-motion";
 export default function Library({ libraries, selectedTab, setSelectedTab, setMessage }) {
     const [hoverTab, setHoverTab] = useState();
     const [images, setImages] = useState();
-    
-    const handleClick = (title) => {
-        if (selectedTab !== undefined) {
-        animate(
-            document.getElementById(selectedTab),
-            { backgroundColor: "#131314", borderColor: "#131314" },
-            { duration: 0.5 }
-        );
-        }
-        setSelectedTab(title);
-        animate(
-        document.getElementById(title),
-        { backgroundColor: "#1D1D1F", borderColor: "#2E2E3B" },
-        { duration: 0.5 }
-        );
-        getChatHistory(title);
-    };
 
     const getChatHistory = async(title) => {
         //update the messages with the chatbot input
@@ -39,28 +22,59 @@ export default function Library({ libraries, selectedTab, setSelectedTab, setMes
         }
         });
     }
-
-    const handleHover = (title) => {
-        setHoverTab(title);
-        if (title !== selectedTab) {
+    
+  const handleClick = (title) => {
+    var elms = document.querySelectorAll('[id="' + title + '"]');
+    var selectedTabs = document.querySelectorAll('[id="' + selectedTab + '"]');
+    for(var i = 0; i < selectedTabs.length; i++){
+      if (selectedTab !== undefined) {
         animate(
-            document.getElementById(title),
-            { backgroundColor: "#1d1d1f" },
-            { duration: 0.5 }
+          selectedTabs[i],
+          { backgroundColor: "#131314", borderColor: "#131314" },
+          { duration: 0.5 }
         );
-        }
-    };
+      }
+    }
+    setSelectedTab(title);
+    for(var i = 0; i < elms.length; i++){
+      animate(
+        elms[i],
+        { backgroundColor: "#1D1D1F", borderColor: "#2E2E3B" },
+        { duration: 0.5 }
+      );
+    }
+    getChatHistory(title);
+  };
 
-    const handleExit = (title) => {
-        setHoverTab("");
-        if (title !== selectedTab) {
+  const handleHover = (title) => {
+    var elms = document.querySelectorAll('[id="' + title + '"]');
+    setHoverTab(title);
+    for(var i = 0; i < elms.length; i++){
+
+      if (title !== selectedTab) {
         animate(
-            document.getElementById(title),
-            { backgroundColor: "#131314" },
-            { duration: 0.5 }
+          elms[i],
+          { backgroundColor: "#1d1d1f" },
+          { duration: 0.5 }
         );
-        }
-    };
+      }
+    }
+  };
+
+  const handleExit = (title) => {
+    var elms = document.querySelectorAll('[id="' + title + '"]');
+    setHoverTab("");
+    for(var i = 0; i < elms.length; i++){
+
+      if (title !== selectedTab) {
+        animate(
+          elms[i],
+          { backgroundColor: "#131314" },
+          { duration: 0.5 }
+        );
+      }
+    }
+  };
 
     return libraries.map((object, i) => (
         <motion.div

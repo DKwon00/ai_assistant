@@ -38,13 +38,12 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
   const promptVariants = {
     hover: {
       backgroundColor: "#1D1D1F",
-      borderColor: "#1D1D1F",
       color: "#FFF",
       transition: { duration: 0.4 },
     },
     noHover: {
       backgroundColor: "#020203",
-      color: "rgba(255, 255, 255, 0.4)",
+      color: "rgba(255, 255, 255, 0.7)",
       transition: { duration: 0.4 },
     },
     focus: {
@@ -55,8 +54,8 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
     },
     exitFocus: {
       backgroundColor: "#020203",
-      color: "rgba(255, 255, 255, 0.4)",
-      borderColor: "#020203",
+      color: "rgba(255, 255, 255, 0.7)",
+      borderColor: "rgba(255, 255, 255, 0.3)",
       transition: { duration: 0.4 },
     },
   };

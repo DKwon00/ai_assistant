@@ -13,12 +13,12 @@ export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab, 
       setMenuOpen(false);
       animate(
         document.getElementById("menu"),
-        { width: "25px"},
+        { width: "25px" },
         { duration: 0.2 },
       );
       animate(
         document.getElementById("menu"),
-        { height: "20px"},
+        { height: "20px", backgroundColor: "#131314" },
         { duration: 0.3, delay: 0.2 },
       );
     }
@@ -26,12 +26,12 @@ export default function HamburgerMenu({ libraries, selectedTab, setSelectedTab, 
       setMenuOpen(true);
       animate(
         document.getElementById("menu"),
-        { height: "90vh"},
+        { height: "90vh", backgroundColor: "black" },
         { duration: 0.2 },
       );
       animate(
         document.getElementById("menu"),
-        {  width: "250px"},
+        {  width: "250px" },
         { duration: 0.3, delay: 0.2 },
       );
     }
