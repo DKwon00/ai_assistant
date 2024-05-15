@@ -8,7 +8,7 @@
     overflow: hidden;
     /* position */
     padding: 12px 0px;
-    margin-bottom: 4px;
+    margin: 4px 0px;
     /* style */
     border-radius: 7px;
     border-style: solid;
@@ -41,7 +41,6 @@
   .libraryIcon {
     grid-area: icon;
     width: 16px;
-    padding-top: 3px;
     padding-left: 10px;
     z-index: 1;
   }

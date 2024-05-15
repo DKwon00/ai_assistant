@@ -33,7 +33,6 @@
   .clearIcon {
     grid-area: icon;
     width: 16px;
-    padding-top: 3px;
     padding-left: 10px;
     z-index: 1;
   }
@@ -56,7 +55,7 @@
   .optionCheck {
     position: absolute;
     left: 4px;
-    bottom: 5px;
+    bottom: 2px;
     height: 12px;
     width: 12px;
   }
@@ -64,7 +63,7 @@
   .optionClose {
     position: absolute;
     left: 50px;
-    bottom: 5px;
+    bottom: 2px;
     height: 12px;
     width: 12px;
   }
