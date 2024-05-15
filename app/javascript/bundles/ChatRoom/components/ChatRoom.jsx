@@ -1,4 +1,4 @@
-import "../../../stylesheets/styles.css";
+import "./ChatRoom.css";
 import logo from "../components/logo.png";
 import Prompt from "../../Prompt/components/Prompt";
 import Library from "../../Library/components/Library";
@@ -40,9 +40,20 @@ export default function ChatRoom(props) {
           setSelectedTab={setSelectedTab}
           message={message}
           setMessage={setMessage}/>
-        <div className="gameTitle">{selectedTab || "Please select a library to begin chatting!"}</div>
+        <div className="gameTitle">{selectedTab || "Select a library to begin chatting!"}</div>
         <hr style={{ borderColor: "#3A3A40" }}></hr>
         <AnimatePresence mode="wait">
+        { !selectedTab ? (
+          <motion.div className="initLibrary" animate={{ opacity: 1, scale: 1.5 }}>          
+            <Library 
+              libraries={props.gameTitles} 
+              selectedTab={selectedTab} 
+              setSelectedTab={setSelectedTab}
+              message={message}
+              setMessage={setMessage}
+            />
+          </motion.div>
+        ) : null }
           <Prompt chatHistory={message} setMessage={setMessage} gameTitle={selectedTab}/>
         </AnimatePresence>
       </div>

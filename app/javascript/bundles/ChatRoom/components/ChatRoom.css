@@ -1,0 +1,12 @@
+.initLibrary {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+@media (min-width: 768px) {
+    .initLibrary {
+        display: none;
+    }
+  }
