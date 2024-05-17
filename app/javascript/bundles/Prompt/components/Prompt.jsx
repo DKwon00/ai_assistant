@@ -1,15 +1,15 @@
 import "./Prompt.css";
 import Message from "../../Message/components/Message";
-import { useState } from "react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { React, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import React from 'react';
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 
 export default function Prompt({ chatHistory, setMessage, gameTitle }) {
   const promptControls = useAnimation();
   const lineControls = useAnimation();
   const [input, setInput] = useState("Hello! Ask me a question...");
   const [isClicked, setIsClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const lineVariants = {
     hover: {
@@ -95,7 +95,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
 
   const handleKeyDown = async (event) => {
     if (event.key === "Enter" && input != "") {
-
+        setIsLoading(true);
         setMessage((message) => [
           ...message, ["0", input],
         ]);
@@ -110,7 +110,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
                 ...message, ["1", data],
               ]);
             });
-
+      setIsLoading(false);
     }
   };
 
@@ -149,9 +149,9 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
           {chatHistory.map((text) => (
             <Message role={text[0]} chat={text[1]}>{console.log(text[0])}</Message>
           ))}
+          {isLoading ? <Message role="2" chat=" "></Message> : null}
         </ScrollToBottom>
     </motion.div>
-    ) : null//implement popular topics
-
+    ) : null
   );
 }
