@@ -47,7 +47,7 @@ const loadingCircleTransition = {
   ease: "easeInOut",
 };
 
-export default function ThreeDotsWave() {
+export default function Loading() {
   return (
     <motion.div
       style={loadingContainer}
