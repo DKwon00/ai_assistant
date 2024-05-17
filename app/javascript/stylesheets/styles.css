@@ -80,8 +80,7 @@ body {
 .messageContainer {
   overflow-y: auto;
   height: 60vh;
-  margin: auto;
-  max-width: 800px;
+  margin: 0% 2% 0% 2%;
   font-size: 15px;
 }
 
