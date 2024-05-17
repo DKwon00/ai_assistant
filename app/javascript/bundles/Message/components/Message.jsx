@@ -1,22 +1,42 @@
 import "./Message.css";
-import { AnimatePresence, motion } from "framer-motion";
 import icon from "./logo.png"
 import React from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+
+const newMessage = {
+  start: {
+    y: [0, 0],
+    transition: {
+      duration: 0.8,
+      ease: [0, 0.71, 0.2, 1.01],
+    },
+  },
+  end: {
+    y: [50, 0],
+  },
+};
 
 export default function Message(props) {
   if (props.chat) {
       return (
         <div>
+          {props.role === "2" && (
+            <motion.div
+              className="botMessage"
+              variants={newMessage}
+              initial="start"
+              animate="end"
+            >
+              <img src={icon}></img>  
+              <Loading />
+            </motion.div>
+          )}
           {props.role === "1" &&
             <motion.div
             className="botMessage"
-            initial={{ y: [0, 0] }}
-            animate={{ y: [50, 0] }}
-            transition={{
-              duration: 0.8,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-            exit={{ y: [0, 0] }}
+            variants={newMessage}
+            initial="start"
+            animate="end"
           >
             <img src={icon}></img>  
             <div className="text">{props.chat}</div>
@@ -25,13 +45,9 @@ export default function Message(props) {
           {props.role === "0" &&
             <motion.div
             className="userMessage"
-            initial={{ y: [0, 0] }}
-            animate={{ y: [50, 0] }}
-            transition={{
-              duration: 0.8,
-              ease: [0, 0.71, 0.2, 1.01],
-            }}
-            exit={{ y: [0, 0] }}
+            variants={newMessage}
+            initial="start"
+            animate="end"
           > 
             <div className="text">{props.chat}</div>
           </motion.div>
