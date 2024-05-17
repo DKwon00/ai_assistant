@@ -27,7 +27,6 @@ export default function Message(props) {
               variants={newMessage}
               initial="start"
               animate="end"
-              transition={{ delay: 1 }}
             >
               <img src={icon}></img>  
               <Loading />
