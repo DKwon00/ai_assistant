@@ -147,7 +147,7 @@ export default function Prompt({ chatHistory, setMessage, gameTitle }) {
         </motion.div>
         <ScrollToBottom className="messageContainer">
           {chatHistory.map((text) => (
-            <Message role={text[0]} chat={text[1]}>{console.log(text[0])}</Message>
+            <Message role={text[0]} chat={text[1]}></Message>
           ))}
           {isLoading ? <Message role="2" chat=" "></Message> : null}
         </ScrollToBottom>
