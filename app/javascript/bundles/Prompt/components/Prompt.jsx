@@ -1,6 +1,6 @@
 import "./Prompt.css";
 import Message from "../../Message/components/Message";
-import React { useState } from "react";
+import React, { useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 
