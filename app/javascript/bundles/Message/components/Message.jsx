@@ -1,6 +1,7 @@
 import "./Message.css";
 import icon from "./logo.png"
 import React from 'react';
+import Loading from "../../Loading/components/Loading";
 import { AnimatePresence, motion } from "framer-motion";
 
 const newMessage = {
