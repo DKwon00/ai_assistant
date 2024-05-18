@@ -21,17 +21,16 @@ export default function Message(props) {
   if (props.chat) {
       return (
         <div>
-          {props.role === "2" && (
+          {props.role === "0" &&
             <motion.div
-              className="botMessage"
-              variants={newMessage}
-              initial="start"
-              animate="end"
-            >
-              <img src={icon}></img>  
-              <Loading />
-            </motion.div>
-          )}
+            className="userMessage"
+            variants={newMessage}
+            initial="start"
+            animate="end"
+          > 
+            <div className="text">{props.chat}</div>
+          </motion.div>
+          }
           {props.role === "1" &&
             <motion.div
             className="botMessage"
@@ -43,19 +42,18 @@ export default function Message(props) {
             <div className="text">{props.chat}</div>
           </motion.div>
           }
-          {props.role === "0" &&
+          {props.role === "2" && (
             <motion.div
-            className="userMessage"
-            variants={newMessage}
-            initial="start"
-            animate="end"
-          > 
-            <div className="text">{props.chat}</div>
-          </motion.div>
-          }
+              className="botMessage"
+              variants={newMessage}
+              initial="start"
+              animate="end"
+            >
+              <img src={icon}></img>
+              <Loading />
+            </motion.div>
+          )}
         </div>
-
-    )
-    ;
+    );
   }
 }
