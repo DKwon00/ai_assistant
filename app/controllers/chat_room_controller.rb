@@ -1,15 +1,19 @@
 require "openai"
 
 class ChatRoomController < ApplicationController
+    #get the chat history from the user if signed in, or from the current session. If it doesn't exist, then initialize chat history
     def get_chat_history
+        #if the user is signed in, get the chat history from the current user
         if (user_signed_in?)
             if Topic.exists?(user_id: current_user.id, title: params["title"])
                 chat_history = Topic.find_by(user_id: current_user.id, title: params["title"]).q_and_a
             else
                 chat_history = Topic.create(user_id: current_user.id, title: params["title"])
             end
+        #elsif the chat history exists within the session grab it
         elsif session[params["title"]]
             chat_history = session[params["title"]]
+        #else initialize chat history
         else
             chat_history = []
         end
@@ -17,14 +21,14 @@ class ChatRoomController < ApplicationController
         render json: chat_history.to_json
     end
 
+    #grab chatGPTs reply based off the question the user asked
     def reply
-        #potentially find a better way to authenticate requests
-        
         context = get_context()
-
         chunk_size = 10000
         start = 0
         end_index = chunk_size
+
+        #loop through the context, broken up by chunks to find the appropriate context
         loop do
             @response = query_chatgpt(context[start...end_index])
             break if end_index >= context.length
@@ -36,12 +40,13 @@ class ChatRoomController < ApplicationController
         if @response == "Not Found"
             @response = query_online
         end
+        #if the user is signed in, save the chats to database and send back AIs response to webpage
         if (user_signed_in?)
-            #save the chats to database and send back AIs response to webpage
             topic = Topic.find_by(user_id: current_user.id, title: params["title"])
             topic.q_and_a << ["0", params["message"]]
             topic.q_and_a << ["1", @response]
             topic.save
+        #if no one is signed in, store it in the client session
         else
             if session[params["title"]].nil?
                 session[params["title"]] = []
@@ -53,7 +58,8 @@ class ChatRoomController < ApplicationController
         render json: @response.to_json
     end
 
-    def destroy 
+    #delete the chat history
+    def destroy
         if (user_signed_in?)
             if Topic.exists?(user_id: current_user.id, title: params["title"])
                 topic = Topic.find_by(user_id: current_user.id, title: params["title"])
@@ -66,7 +72,8 @@ class ChatRoomController < ApplicationController
     end
     
     private
-    
+
+    #initialize the openAI API client
     def client
         @client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])   
     end
